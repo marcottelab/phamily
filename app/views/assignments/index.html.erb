@@ -1,0 +1,40 @@
+<h1>Listing assignments</h1>
+
+<table>
+  <tr>
+    <th>Species</th>
+    <th>Original</th>
+    <th>Model</th>
+    <th>Region</th>
+    <th>E value</th>
+    <th>Superfamily</th>
+    <th>Superfamily desc</th>
+    <th>Family e value</th>
+    <th>Family</th>
+    <th>Family desc</th>
+    <th>Most similar structure</th>
+  </tr>
+
+<% @assignments.each do |assignment| %>
+  <tr>
+    <td><%=h assignment.species %></td>
+    <td><%=h assignment.original_id %></td>
+    <td><%=h assignment.model_id %></td>
+    <td><%=h assignment.region %></td>
+    <td><%=h assignment.e_value %></td>
+    <td><%=h assignment.superfamily_id %></td>
+    <td><%=h assignment.superfamily_desc %></td>
+    <td><%=h assignment.family_e_value %></td>
+    <td><%=h assignment.family_id %></td>
+    <td><%=h assignment.family_desc %></td>
+    <td><%=h assignment.most_similar_structure %></td>
+    <td><%= link_to 'Show', assignment %></td>
+    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+    <td><%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New assignment', new_assignment_path %>

@@ -1,0 +1,58 @@
+<p>
+  <b>Species:</b>
+  <%=h @assignment.species %>
+</p>
+
+<p>
+  <b>Original:</b>
+  <%=h @assignment.original_id %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%=h @assignment.model_id %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%=h @assignment.region %>
+</p>
+
+<p>
+  <b>E value:</b>
+  <%=h @assignment.e_value %>
+</p>
+
+<p>
+  <b>Superfamily:</b>
+  <%=h @assignment.superfamily_id %>
+</p>
+
+<p>
+  <b>Superfamily desc:</b>
+  <%=h @assignment.superfamily_desc %>
+</p>
+
+<p>
+  <b>Family e value:</b>
+  <%=h @assignment.family_e_value %>
+</p>
+
+<p>
+  <b>Family:</b>
+  <%=h @assignment.family_id %>
+</p>
+
+<p>
+  <b>Family desc:</b>
+  <%=h @assignment.family_desc %>
+</p>
+
+<p>
+  <b>Most similar structure:</b>
+  <%=h @assignment.most_similar_structure %>
+</p>
+
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

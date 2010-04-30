@@ -1,0 +1,56 @@
+<h1>Editing assignment</h1>
+
+<% form_for(@assignment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :species %><br />
+    <%= f.text_field :species %>
+  </p>
+  <p>
+    <%= f.label :original_id %><br />
+    <%= f.text_field :original_id %>
+  </p>
+  <p>
+    <%= f.label :model_id %><br />
+    <%= f.text_field :model_id %>
+  </p>
+  <p>
+    <%= f.label :region %><br />
+    <%= f.text_field :region %>
+  </p>
+  <p>
+    <%= f.label :e_value %><br />
+    <%= f.text_field :e_value %>
+  </p>
+  <p>
+    <%= f.label :superfamily_id %><br />
+    <%= f.text_field :superfamily_id %>
+  </p>
+  <p>
+    <%= f.label :superfamily_desc %><br />
+    <%= f.text_field :superfamily_desc %>
+  </p>
+  <p>
+    <%= f.label :family_e_value %><br />
+    <%= f.text_field :family_e_value %>
+  </p>
+  <p>
+    <%= f.label :family_id %><br />
+    <%= f.text_field :family_id %>
+  </p>
+  <p>
+    <%= f.label :family_desc %><br />
+    <%= f.text_field :family_desc %>
+  </p>
+  <p>
+    <%= f.label :most_similar_structure %><br />
+    <%= f.text_field :most_similar_structure %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @assignment %> |
+<%= link_to 'Back', assignments_path %>

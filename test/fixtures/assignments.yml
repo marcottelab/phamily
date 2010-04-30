@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  species: MyString
+  original_id: MyString
+  model_id: 1
+  region: MyString
+  e_value: 9.99
+  superfamily_id: 1
+  superfamily_desc: MyString
+  family_e_value: 9.99
+  family_id: 1
+  family_desc: MyString
+  most_similar_structure: MyString
+
+two:
+  species: MyString
+  original_id: MyString
+  model_id: 1
+  region: MyString
+  e_value: 9.99
+  superfamily_id: 1
+  superfamily_desc: MyString
+  family_e_value: 9.99
+  family_id: 1
+  family_desc: MyString
+  most_similar_structure: MyString
