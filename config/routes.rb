@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :genes
+
+  map.resources :phenotypes
+
   map.resources :assignments
 
   # The priority is based upon order of creation: first created -> highest priority.

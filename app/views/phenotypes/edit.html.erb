@@ -1,0 +1,24 @@
+<h1>Editing phenotype</h1>
+
+<% form_for(@phenotype) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :phenolog_id %><br />
+    <%= f.text_field :phenolog_id %>
+  </p>
+  <p>
+    <%= f.label :desc %><br />
+    <%= f.text_field :desc %>
+  </p>
+  <p>
+    <%= f.label :genes_count %><br />
+    <%= f.text_field :genes_count %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @phenotype %> |
+<%= link_to 'Back', phenotypes_path %>

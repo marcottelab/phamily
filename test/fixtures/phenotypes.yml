@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  phenolog_id: MyString
+  desc: MyString
+  genes_count: 1
+
+two:
+  phenolog_id: MyString
+  desc: MyString
+  genes_count: 1

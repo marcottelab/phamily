@@ -1,0 +1,24 @@
+<h1>Listing phenotypes</h1>
+
+<table>
+  <tr>
+    <th>Phenolog</th>
+    <th>Desc</th>
+    <th>Genes count</th>
+  </tr>
+
+<% @phenotypes.each do |phenotype| %>
+  <tr>
+    <td><%=h phenotype.phenolog_id %></td>
+    <td><%=h phenotype.desc %></td>
+    <td><%=h phenotype.genes_count %></td>
+    <td><%= link_to 'Show', phenotype %></td>
+    <td><%= link_to 'Edit', edit_phenotype_path(phenotype) %></td>
+    <td><%= link_to 'Destroy', phenotype, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New phenotype', new_phenotype_path %>
