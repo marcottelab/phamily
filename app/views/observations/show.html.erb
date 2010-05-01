@@ -1,0 +1,13 @@
+<p>
+  <b>Gene:</b>
+  <%=h @observation.gene %>
+</p>
+
+<p>
+  <b>Phenotype:</b>
+  <%=h @observation.phenotype %>
+</p>
+
+
+<%= link_to 'Edit', edit_observation_path(@observation) %> |
+<%= link_to 'Back', observations_path %>

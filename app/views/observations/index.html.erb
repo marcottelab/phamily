@@ -1,0 +1,22 @@
+<h1>Listing observations</h1>
+
+<table>
+  <tr>
+    <th>Gene</th>
+    <th>Phenotype</th>
+  </tr>
+
+<% @observations.each do |observation| %>
+  <tr>
+    <td><%=h observation.gene %></td>
+    <td><%=h observation.phenotype %></td>
+    <td><%= link_to 'Show', observation %></td>
+    <td><%= link_to 'Edit', edit_observation_path(observation) %></td>
+    <td><%= link_to 'Destroy', observation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New observation', new_observation_path %>

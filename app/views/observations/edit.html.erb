@@ -1,0 +1,20 @@
+<h1>Editing observation</h1>
+
+<% form_for(@observation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :gene %><br />
+    <%= f.text_field :gene %>
+  </p>
+  <p>
+    <%= f.label :phenotype %><br />
+    <%= f.text_field :phenotype %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @observation %> |
+<%= link_to 'Back', observations_path %>
