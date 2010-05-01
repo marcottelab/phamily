@@ -1,0 +1,24 @@
+<h1>Editing phenolog</h1>
+
+<% form_for(@phenolog) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :distance %><br />
+    <%= f.text_field :distance %>
+  </p>
+  <p>
+    <%= f.label :species_pair %><br />
+    <%= f.text_field :species_pair %>
+  </p>
+  <p>
+    <%= f.label :confirmed %><br />
+    <%= f.check_box :confirmed %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @phenolog %> |
+<%= link_to 'Back', phenologs_path %>

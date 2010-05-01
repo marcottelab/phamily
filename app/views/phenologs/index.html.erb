@@ -1,0 +1,24 @@
+<h1>Listing phenologs</h1>
+
+<table>
+  <tr>
+    <th>Distance</th>
+    <th>Species pair</th>
+    <th>Confirmed</th>
+  </tr>
+
+<% @phenologs.each do |phenolog| %>
+  <tr>
+    <td><%=h phenolog.distance %></td>
+    <td><%=h phenolog.species_pair %></td>
+    <td><%=h phenolog.confirmed %></td>
+    <td><%= link_to 'Show', phenolog %></td>
+    <td><%= link_to 'Edit', edit_phenolog_path(phenolog) %></td>
+    <td><%= link_to 'Destroy', phenolog, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New phenolog', new_phenolog_path %>

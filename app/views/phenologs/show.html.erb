@@ -1,0 +1,18 @@
+<p>
+  <b>Distance:</b>
+  <%=h @phenolog.distance %>
+</p>
+
+<p>
+  <b>Species pair:</b>
+  <%=h @phenolog.species_pair %>
+</p>
+
+<p>
+  <b>Confirmed:</b>
+  <%=h @phenolog.confirmed %>
+</p>
+
+
+<%= link_to 'Edit', edit_phenolog_path(@phenolog) %> |
+<%= link_to 'Back', phenologs_path %>

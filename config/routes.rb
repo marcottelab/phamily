@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :phenologs
+
   map.resources :observations
 
   map.resources :genes
