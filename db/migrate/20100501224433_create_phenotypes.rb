@@ -3,7 +3,7 @@ class CreatePhenotypes < ActiveRecord::Migration
     create_table :phenotypes do |t|
       t.string :species, :limit => 3
       t.string :original_id, :limit => 20, :unique => true
-      t.string :desc
+      t.text :desc
       t.integer :genes_count, :default => 0
     end
 
