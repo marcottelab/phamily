@@ -4,7 +4,7 @@ namespace :db do
   task :load_genes => :environment do
 
     DATA_DIR = Rails.root + "data/"
-    Dir.foreach(DATA_DIR)
+    Dir.foreach(DATA_DIR) do |file|
 
       next unless file =~ /^gene_translation\.[A-Z][a-z]$/
 
@@ -17,4 +17,4 @@ namespace :db do
     end
 
   end
-en
+end
