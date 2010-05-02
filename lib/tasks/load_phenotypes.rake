@@ -2,14 +2,14 @@
 
 def batch_insert_genes species, arr
   gene_data = arr.collect{|a| "('#{species}', '#{a}')"}
-  sql = "INSERT INTO genes (original_id, species) VALUES " + gene_data.join(", ") + ";"
+  sql = "INSERT INTO phenotypes (species, original_id, desc) VALUES " + gene_data.join(", ") + ";"
   ActiveRecord::Base.connection.execute sql
 end
 
 namespace :db do
   namespace :phenologs do
-    desc "load genes from phenologs.org tables"
-    task :load_genes => :environment do
+    desc "load phenotypes from phenologs.org tables"
+    task :load_phenotypes => :environment do
 
       DATA_DIR = Rails.root + "data/"
       Dir.foreach(DATA_DIR) do |file|
@@ -27,7 +27,7 @@ namespace :db do
           genes << line
         end
 
-        batch_insert_genes(sp, genes)
+        batch_insert_phenotypes(sp, genes)
       end
     end
   end
