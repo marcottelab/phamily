@@ -52,12 +52,11 @@ ActiveRecord::Schema.define(:version => 20100501234929) do
   add_index "observations", ["gene_id", "phenotype_id"], :name => "index_observations_on_gene_id_and_phenotype_id", :unique => true
 
   create_table "phenologs", :force => true do |t|
-    t.decimal  "distance"
-    t.decimal  "ppv",                       :precision => 4, :scale => 3
-    t.string   "species_pair", :limit => 6
-    t.boolean  "confirmed",                                               :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.decimal "distance"
+    t.decimal "ppv",                       :precision => 4, :scale => 3
+    t.string  "species_pair", :limit => 6
+    t.boolean "confirmed",                                               :default => false
+    t.integer "overlap"
   end
 
   create_table "phenologs_phenotypes", :force => true do |t|
@@ -72,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20100501234929) do
     t.string  "original_id", :limit => 20
     t.text    "desc"
     t.integer "genes_count",               :default => 0
+    t.integer "column_id"
   end
 
   add_index "phenotypes", ["original_id"], :name => "index_phenotypes_on_original_id", :unique => true

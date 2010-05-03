@@ -5,8 +5,7 @@ class CreatePhenologs < ActiveRecord::Migration
       t.decimal :ppv, :precision => 4, :scale => 3
       t.string :species_pair, :limit => 6
       t.boolean :confirmed, :default => false
-
-      t.timestamps
+      t.integer :overlap
     end
   end
 
