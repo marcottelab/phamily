@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100429234353) do
+ActiveRecord::Schema.define(:version => 20100501234929) do
 
   create_table "assignments", :force => true do |t|
     t.string   "species"
@@ -33,5 +33,47 @@ ActiveRecord::Schema.define(:version => 20100429234353) do
   add_index "assignments", ["original_id", "species"], :name => "index_assignments_on_original_id_and_species"
   add_index "assignments", ["row_id", "species"], :name => "index_assignments_on_row_id_and_species"
   add_index "assignments", ["superfamily_id"], :name => "index_assignments_on_superfamily_id"
+
+  create_table "genes", :force => true do |t|
+    t.string  "original_id",      :limit => 20
+    t.string  "species",          :limit => 3
+    t.string  "symbol",           :limit => 20
+    t.integer "phenotypes_count",               :default => 0
+  end
+
+  add_index "genes", ["original_id", "species"], :name => "index_genes_on_original_id_and_species", :unique => true
+  add_index "genes", ["symbol"], :name => "index_genes_on_symbol"
+
+  create_table "observations", :force => true do |t|
+    t.integer "gene_id"
+    t.integer "phenotype_id"
+  end
+
+  add_index "observations", ["gene_id", "phenotype_id"], :name => "index_observations_on_gene_id_and_phenotype_id", :unique => true
+
+  create_table "phenologs", :force => true do |t|
+    t.decimal  "distance"
+    t.string   "species_pair", :limit => 6
+    t.boolean  "confirmed",                 :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phenologs_phenotypes", :force => true do |t|
+    t.integer "phenolog_id"
+    t.integer "phenotype_id"
+  end
+
+  add_index "phenologs_phenotypes", ["phenotype_id", "phenolog_id"], :name => "index_phenologs_phenotypes_on_phenotype_id_and_phenolog_id", :unique => true
+
+  create_table "phenotypes", :force => true do |t|
+    t.string  "species",     :limit => 3
+    t.string  "original_id", :limit => 20
+    t.text    "desc"
+    t.integer "genes_count",               :default => 0
+  end
+
+  add_index "phenotypes", ["original_id"], :name => "index_phenotypes_on_original_id", :unique => true
+  add_index "phenotypes", ["species"], :name => "index_phenotypes_on_species"
 
 end

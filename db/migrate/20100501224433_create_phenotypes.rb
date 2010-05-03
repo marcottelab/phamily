@@ -7,8 +7,8 @@ class CreatePhenotypes < ActiveRecord::Migration
       t.integer :genes_count, :default => 0
     end
 
-    add_column :phenotypes, :phenologdb_id, :unique => true
-    add_column :phenotypes, :species
+    add_index :phenotypes, :original_id, :unique => true
+    add_index :phenotypes, :species
   end
 
   def self.down

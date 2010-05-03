@@ -14,7 +14,7 @@ namespace :db do
         while line = f.gets
           line.chomp!
           row = line.split("\t")
-          sp = row[0][0..2]
+          sp = row[0][0..1]
 
           Phenotype.create!(:species => sp, :original_id => row[0], :desc => row[1])
         end
