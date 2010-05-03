@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(:version => 20100501234929) do
 
   create_table "phenologs", :force => true do |t|
     t.decimal  "distance"
+    t.decimal  "ppv",                       :precision => 4, :scale => 3
     t.string   "species_pair", :limit => 6
-    t.boolean  "confirmed",                 :default => false
+    t.boolean  "confirmed",                                               :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

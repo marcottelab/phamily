@@ -5,6 +5,7 @@ class CreatePhenotypes < ActiveRecord::Migration
       t.string :original_id, :limit => 20, :unique => true
       t.text :desc
       t.integer :genes_count, :default => 0
+      t.integer :column_id
     end
 
     add_index :phenotypes, :original_id, :unique => true
