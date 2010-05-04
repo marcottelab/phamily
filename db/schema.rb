@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100501234929) do
+ActiveRecord::Schema.define(:version => 20100504163248) do
 
   create_table "assignments", :force => true do |t|
     t.string   "species"
@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(:version => 20100501234929) do
     t.string   "most_similar_structure"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "gene_id"
   end
 
   add_index "assignments", ["family_id"], :name => "index_assignments_on_family_id"
+  add_index "assignments", ["gene_id"], :name => "index_assignments_on_gene_id"
   add_index "assignments", ["model_id"], :name => "index_assignments_on_model_id"
   add_index "assignments", ["original_id", "species"], :name => "index_assignments_on_original_id_and_species"
   add_index "assignments", ["row_id", "species"], :name => "index_assignments_on_row_id_and_species"
@@ -51,6 +53,13 @@ ActiveRecord::Schema.define(:version => 20100501234929) do
 
   add_index "observations", ["gene_id", "phenotype_id"], :name => "index_observations_on_gene_id_and_phenotype_id", :unique => true
 
+  create_table "phenolog_associations", :force => true do |t|
+    t.integer "phenolog_id"
+    t.integer "phenotype_id"
+  end
+
+  add_index "phenolog_associations", ["phenotype_id", "phenolog_id"], :name => "index_phenolog_associations_on_phenotype_id_and_phenolog_id", :unique => true
+
   create_table "phenologs", :force => true do |t|
     t.decimal "distance"
     t.decimal "ppv",                       :precision => 4, :scale => 3
@@ -58,13 +67,6 @@ ActiveRecord::Schema.define(:version => 20100501234929) do
     t.boolean "confirmed",                                               :default => false
     t.integer "overlap"
   end
-
-  create_table "phenologs_phenotypes", :force => true do |t|
-    t.integer "phenolog_id"
-    t.integer "phenotype_id"
-  end
-
-  add_index "phenologs_phenotypes", ["phenotype_id", "phenolog_id"], :name => "index_phenologs_phenotypes_on_phenotype_id_and_phenolog_id", :unique => true
 
   create_table "phenotypes", :force => true do |t|
     t.string  "species",     :limit => 3
@@ -74,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20100501234929) do
     t.integer "column_id"
   end
 
+  add_index "phenotypes", ["column_id"], :name => "index_phenotypes_on_column_id", :unique => true
   add_index "phenotypes", ["original_id"], :name => "index_phenotypes_on_original_id", :unique => true
   add_index "phenotypes", ["species"], :name => "index_phenotypes_on_species"
 
