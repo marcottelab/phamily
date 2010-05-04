@@ -3,15 +3,9 @@
   <%=h "%E" % @phenolog.distance %>
 </p>
 
-<p>
-  <b><%=h @phenotypes.first.species %> Phenotype:</b>
-  <%= link_to(h(@phenolog.phenotypes.first.desc), @phenolog.phenotypes.first) %>
-</p>
+<%= render :partial => 'phenotype', :object => @phenotypes[0] %>
 
-<p>
-  <b><%=h @phenotypes.last.species %> Phenotype:</b>
-  <%= link_to(h(@phenolog.phenotypes.last.desc), @phenolog.phenotypes.last) %>
-</p>
+<%= render :partial => 'phenotype', :object => @phenotypes[1] %>
 
 <% if @phenolog.confirmed %>
   <p><b>Confirmed</b></p>

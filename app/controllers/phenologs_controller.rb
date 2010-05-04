@@ -15,6 +15,7 @@ class PhenologsController < ApplicationController
   def show
     @phenolog = Phenolog.find(params[:id], :include => :phenotypes)
     @phenotypes = @phenolog.phenotypes
+    @genes = [@phenotypes[0].genes,@phenotypes[1].genes]
 
     respond_to do |format|
       format.html # show.html.erb
