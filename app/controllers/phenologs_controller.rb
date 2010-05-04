@@ -13,7 +13,8 @@ class PhenologsController < ApplicationController
   # GET /phenologs/1
   # GET /phenologs/1.xml
   def show
-    @phenolog = Phenolog.find(params[:id])
+    @phenolog = Phenolog.find(params[:id], :include => :phenotypes)
+    @phenotypes = @phenolog.phenotypes
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,17 +1,21 @@
 <p>
   <b>Distance:</b>
-  <%=h @phenolog.distance %>
+  <%=h "%E" % @phenolog.distance %>
 </p>
 
 <p>
-  <b>Species pair:</b>
-  <%=h @phenolog.species_pair %>
+  <b><%=h @phenotypes.first.species %> Phenotype:</b>
+  <%= link_to(h(@phenolog.phenotypes.first.desc), @phenolog.phenotypes.first) %>
 </p>
 
 <p>
-  <b>Confirmed:</b>
-  <%=h @phenolog.confirmed %>
+  <b><%=h @phenotypes.last.species %> Phenotype:</b>
+  <%= link_to(h(@phenolog.phenotypes.last.desc), @phenolog.phenotypes.last) %>
 </p>
+
+<% if @phenolog.confirmed %>
+  <p><b>Confirmed</b></p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_phenolog_path(@phenolog) %> |

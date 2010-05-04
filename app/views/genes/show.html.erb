@@ -1,5 +1,5 @@
 <p>
-  <b>Original:</b>
+  <b>Unique Identifier:</b>
   <%=h @gene.original_id %>
 </p>
 
@@ -8,9 +8,25 @@
   <%=h @gene.species %>
 </p>
 
+<%- unless @gene.symbol.nil? -%>
 <p>
   <b>Symbol:</b>
   <%=h @gene.symbol %>
+</p>
+<%- end -%>
+
+<table>
+<%= render :partial => 'assignment_th' %>
+<%- @assignments.each do |assignment| -%>
+  <%= render :partial => 'assignment', :locals => {:assignment => assignment} %>
+<%- end -%>
+</table>
+
+<p>
+  <b>Phenotypes</b>
+  <ul><%- @phenotypes.each do |phenotype| -%>
+    <li><%= link_to h(phenotype.desc), phenotype %></li>
+  <%- end -%></ul>
 </p>
 
 

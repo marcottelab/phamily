@@ -14,6 +14,8 @@ class PhenotypesController < ApplicationController
   # GET /phenotypes/1.xml
   def show
     @phenotype = Phenotype.find(params[:id])
+    @phenologs = @phenotype.phenologs.find(:all, :order => "distance")
+    @genes = @phenotype.genes.find(:all, :order => "original_id")
 
     respond_to do |format|
       format.html # show.html.erb

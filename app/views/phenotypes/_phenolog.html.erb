@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to phenolog.id, phenolog %></td>
+  <td><%= phenolog.other_phenotype(phenotype.id).desc %> (<%= phenolog.other_phenotype(phenotype.id).genes_count %>)</td>
+  <td><%=h phenolog.overlap %></td>
+  <td><%=h "%E" % phenolog.distance %></td>
+</tr>

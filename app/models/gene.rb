@@ -1,6 +1,7 @@
 class Gene < ActiveRecord::Base
   has_many :observations
   has_many :phenotypes, :through => :observations
+  has_many :assignments
 
   def update_count
     update_attribute(:phenotypes_count, self.phenotypes.count)

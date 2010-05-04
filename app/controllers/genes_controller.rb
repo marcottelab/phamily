@@ -13,7 +13,9 @@ class GenesController < ApplicationController
   # GET /genes/1
   # GET /genes/1.xml
   def show
-    @gene = Gene.find(params[:id])
+    @gene = Gene.find(params[:id], :include => [:assignments, :phenotypes])
+    @assignments = @gene.assignments
+    @phenotypes = @gene.phenotypes
 
     respond_to do |format|
       format.html # show.html.erb

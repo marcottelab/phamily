@@ -1,16 +1,23 @@
 <p>
-  <b>Phenolog:</b>
-  <%=h @phenotype.phenolog_id %>
-</p>
-
-<p>
   <b>Desc:</b>
   <%=h @phenotype.desc %>
 </p>
 
 <p>
-  <b>Genes count:</b>
-  <%=h @phenotype.genes_count %>
+  <b><%=h @phenotype.genes_count %> Genes:</b>
+  <ul style="display:inline; list-style: none"><%- @genes.each do |gene| -%>
+    <li style="display: inline;"><%= link_to h(gene.original_id), gene %></li>
+  <%- end -%></ul>
+</p>
+
+<p>
+  <b>Phenologs:</b>
+<table>
+  <%= render :partial => 'phenolog_th' %>
+  <%- @phenologs.each do |phenolog| -%>
+    <%= render :partial => 'phenolog', :locals => {:phenolog => phenolog, :phenotype => @phenotype} %>
+  <%- end -%>
+</table>
 </p>
 
 
