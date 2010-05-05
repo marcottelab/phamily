@@ -7,6 +7,15 @@ class Gene < ActiveRecord::Base
     update_attribute(:phenotypes_count, self.phenotypes.count)
   end
 
+  # Get the gene's assigned superfamily_ids
+  def superfamily_ids
+    superfamily_ids_set.to_a
+  end
+
+  def superfamily_ids_set
+    Set.new(self.assignments.collect { |a| a.superfamily_id })
+  end
+
 #  def self.find_or_create_from_phenologdb_by_phenotype_id dbh, local_phenotype
 #    sth = dbh.prepare("SELECT DISTINCT g.unique_id FROM genes g INNER JOIN phenotype_observations po ON (g.id = po.gene_id) WHERE po.phenotype_id = #{local_phenotype.column_id}")
 #    sth.execute
