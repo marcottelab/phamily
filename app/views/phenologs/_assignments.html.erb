@@ -1,0 +1,11 @@
+<p>
+  <b>SUPERFAMILY Assignments</b>
+  <ul>
+  <%- assignments.each_pair do |assignment_id,species_hash| -%>
+    <li><b><%=h assignment_id %></b>
+    <ul><%- species_hash.each_pair do |species,genes| -%>
+      <li><b><%= h species %></b>: <%= genes.collect{|g| g.original_id}.join(", ") %></li>
+    <%- end -%></ul></li>
+  <%- end -%>
+  </ul>
+</p>

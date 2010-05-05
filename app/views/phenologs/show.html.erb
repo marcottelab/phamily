@@ -7,6 +7,10 @@
 
 <%= render :partial => 'phenotype', :object => @phenotypes[1] %>
 
+<%= render :partial => 'assignments', :object => @phenolog.genes_by_assignment %>
+
+<%= render :partial => 'orthologs', :object => @phenolog.orthologs_by_assignment(:max_evalue => 0.01) %>
+
 <% if @phenolog.confirmed %>
   <p><b>Confirmed</b></p>
 <% end %>
