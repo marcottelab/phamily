@@ -3,6 +3,13 @@ class Gene < ActiveRecord::Base
   has_many :phenotypes, :through => :observations
   has_many :assignments
 
+  named_scope :with_assignments, :select => "DISTINCT genes.id", :joins => "INNER JOIN assignments ON (assignments.gene_id = genes.id)"
+  named_scope :count_with_assignments_, :select => "COUNT(DISTINCT genes.id)", :joins => "INNER JOIN assignments ON (assignments.gene_id = genes.id)"
+
+  def self.count_with_assignments
+    @@count_with_assignments ||= Gene.count_with_assignments_[0].count.to_i
+  end
+
   def update_count
     update_attribute(:phenotypes_count, self.phenotypes.count)
   end
@@ -14,6 +21,25 @@ class Gene < ActiveRecord::Base
 
   def superfamily_ids_set
     Set.new(self.assignments.collect { |a| a.superfamily_id })
+  end
+
+  # Frequency of a superfamily assignment in this gene:
+  # Number of occurrences of assignment ti in gene dj
+  # divided by
+  # total number of assignments in the gene
+  def tf(superfamily_id)
+    Assignment.count_occurrences_of_assignment_in_gene(superfamily_id, self.id) \
+      / Assignment.assignment_counts_by_gene(self.id).to_f
+  end
+
+  def tf_idf(superfamily_id)
+    tf(superfamily_id) / Assignment.idf(superfamily_id).to_f
+  end
+
+  # Create a document vector from this gene with each assignment treated as a
+  # term.
+  def to_dv
+    DocVector.new(self)
   end
 
 #  def self.find_or_create_from_phenologdb_by_phenotype_id dbh, local_phenotype
