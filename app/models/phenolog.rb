@@ -34,6 +34,10 @@ class Phenolog < ActiveRecord::Base
     orthologs_outer_h
   end
 
+  def to_sim
+    SimilarityTable.new(self)
+  end
+
 protected
   # Returns a hash with keys = assignments, value = second hash.
   # The second hash is from species to list of genes.
