@@ -1,0 +1,18 @@
+<p>
+  <b>Rank:</b>
+  <%=h @orthogroup.rank %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%=h @orthogroup.score %>
+</p>
+
+<p>
+  <b>Species pair:</b>
+  <%=h @orthogroup.species_pair %>
+</p>
+
+
+<%= link_to 'Edit', edit_orthogroup_path(@orthogroup) %> |
+<%= link_to 'Back', orthogroups_path %>

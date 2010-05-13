@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rank: 1
+  score: 1
+  species_pair: MyString
+
+two:
+  rank: 1
+  score: 1
+  species_pair: MyString

@@ -2,6 +2,8 @@ class Gene < ActiveRecord::Base
   has_many :observations
   has_many :phenotypes, :through => :observations
   has_many :assignments
+  has_many :orthologies
+  has_many :orthogroups, :through => :orthologies
 
   named_scope :with_assignments, :select => "DISTINCT genes.id", :joins => "INNER JOIN assignments ON (assignments.gene_id = genes.id)"
   named_scope :count_with_assignments_, :select => "COUNT(DISTINCT genes.id)", :joins => "INNER JOIN assignments ON (assignments.gene_id = genes.id)"

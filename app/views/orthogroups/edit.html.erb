@@ -1,0 +1,24 @@
+<h1>Editing orthogroup</h1>
+
+<% form_for(@orthogroup) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :rank %><br />
+    <%= f.text_field :rank %>
+  </p>
+  <p>
+    <%= f.label :score %><br />
+    <%= f.text_field :score %>
+  </p>
+  <p>
+    <%= f.label :species_pair %><br />
+    <%= f.text_field :species_pair %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @orthogroup %> |
+<%= link_to 'Back', orthogroups_path %>

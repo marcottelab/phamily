@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :orthogroups
+
   map.resources :phenologs
 
   map.resources :observations

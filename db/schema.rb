@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100504163248) do
+ActiveRecord::Schema.define(:version => 20100513015655) do
 
   create_table "assignments", :force => true do |t|
     t.string   "species"
@@ -52,6 +52,24 @@ ActiveRecord::Schema.define(:version => 20100504163248) do
   end
 
   add_index "observations", ["gene_id", "phenotype_id"], :name => "index_observations_on_gene_id_and_phenotype_id", :unique => true
+
+  create_table "orthogroups", :force => true do |t|
+    t.integer  "rank"
+    t.integer  "score"
+    t.string   "species_pair", :limit => 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orthogroups", ["rank", "species_pair"], :name => "index_orthogroups_on_rank_and_species_pair", :unique => true
+
+  create_table "orthologies", :force => true do |t|
+    t.integer "orthogroup_id"
+    t.integer "gene_id"
+    t.decimal "confidence",    :precision => 4, :scale => 3
+  end
+
+  add_index "orthologies", ["gene_id", "orthogroup_id"], :name => "index_orthologies_on_gene_id_and_orthogroup_id", :unique => true
 
   create_table "phenolog_associations", :force => true do |t|
     t.integer "phenolog_id"

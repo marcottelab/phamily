@@ -1,0 +1,24 @@
+<h1>Listing orthogroups</h1>
+
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Score</th>
+    <th>Species pair</th>
+  </tr>
+
+<% @orthogroups.each do |orthogroup| %>
+  <tr>
+    <td><%=h orthogroup.rank %></td>
+    <td><%=h orthogroup.score %></td>
+    <td><%=h orthogroup.species_pair %></td>
+    <td><%= link_to 'Show', orthogroup %></td>
+    <td><%= link_to 'Edit', edit_orthogroup_path(orthogroup) %></td>
+    <td><%= link_to 'Destroy', orthogroup, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New orthogroup', new_orthogroup_path %>
