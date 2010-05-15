@@ -32,21 +32,28 @@ module PhenologsHelper
     middle_tags = similarity_table_header_row(to_gene_original_ids)
 
     from_gene_original_ids.each do |oid|
-      middle_tags += "<tr><td>#{oid}</td>"
+      middle_tags += "<tr><td class=\"gene\">#{oid}</td>"
       
       to_gene_original_ids.each do |pid|
         if similarity_table.has_pair?(pid,oid)
-          sim = similarity_table.get_similarity(pid,oid)
+          sim = similarity_table.get_pair(pid,oid)
           if opts[:mode] == :color
-            color = decimal_to_color(sim)
-            if color == "#ffffff"
-              middle_tags += "<td/>"
+            color = decimal_to_color(sim[0])
+            if color == "#ffffff" 
+              if sim[1]
+                middle_tags += "<td>o</td>"
+              else
+                middle_tags += "<td/>"
+              end
+              
             else
-              middle_tags += "<td bgcolor=\"#{color}\" title=\"#{sim}\">&nbsp;</td>"
+              middle_tags += "<td bgcolor=\"#{color}\" title=\"#{sim[0]}\">"
+              middle_tags += "o" if sim[1]
+              middle_tags += "</td>"
             end
             
           else
-            middle_tags += "<td>#{sim}</td>"
+            middle_tags += "<td>#{sim[0]}, #{sim[1]}</td>"
           end
           
         end
@@ -61,12 +68,12 @@ module PhenologsHelper
   end
 
   def similarity_table_header_row gene_original_ids
-    open_tags = '<tr class="gene_ids"><td>&nbsp;</td>'
+    open_tags = '<tr class="gene_ids"><td/>'
 
     middle_tags = ""
 
     gene_original_ids.each do |oid|
-      middle_tags += "<td>#{oid}</td>"
+      middle_tags += "<td class=\"gene\">#{oid}</td>"
     end
 
     close_tags = '</tr>'

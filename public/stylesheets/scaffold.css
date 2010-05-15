@@ -52,3 +52,18 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+table.similarity tr td {
+    font-weight:bolder;
+    text-align: center;
+}
+table.similarity tr td.gene {
+    font-weight: normal;
+    font-size: smaller;
+}
+
+table.similarity tr:hover {
+    background-color: #CCC;
+}
+table.similarity col:hover {
+    background-color: #CCC;
+}
