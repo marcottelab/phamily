@@ -30,12 +30,11 @@ class Gene < ActiveRecord::Base
   # divided by
   # total number of assignments in the gene
   def tf(superfamily_id)
-    Assignment.count_occurrences_of_assignment_in_gene(superfamily_id, self.id) \
-      / Assignment.assignment_counts_by_gene(self.id).to_f
+    DocVector.tf(self.id, superfamily_id)
   end
 
   def tf_idf(superfamily_id)
-    tf(superfamily_id) / Assignment.idf(superfamily_id).to_f
+    DocVector.tf_idf(self.id, superfamily_id)
   end
 
   # Create a document vector from this gene with each assignment treated as a

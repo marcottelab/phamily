@@ -15,7 +15,8 @@ class Assignment < ActiveRecord::Base
 
 
   def self.assignment_counts_by_gene gid
-    Assignment.assignment_counts_by_gene_(gid)[0].count
+    row = Assignment.assignment_counts_by_gene_(gid)
+    row.size == 0 ? 0 : row[0].count
   end
 
 
